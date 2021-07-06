@@ -9,7 +9,7 @@ const testImages = [
     'https://ichef.bbci.co.uk/news/976/cpsprodpb/1675A/production/_113249919_hi061718491.jpg', 'https://i.guim.co.uk/img/media/9c03bd43c119834ece958f3c370dec83146fe04a/0_200_6000_3602/master/6000.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=de1abf11d1a7a961d5fea63f5a8bee55'
 ]
 
-const dogApi = 'https://mha-api.herokuapp.com/api/characters'
+const dogApi = 'https://dog.ceo/api/breeds/image/random'
 
 const modalBg = document.querySelector('.modal-bg')
 const modalClose = document.querySelector('.modal-close')
@@ -27,15 +27,14 @@ let currentPage = 1
 let rows = 4
 let dogData = []
 
+
 async function getImg(url) {
 
     try {
         let randomData = await axios.get(url)
         let randomImg = randomData.data.message
-
+        
         return randomImg
-
-
     } catch{
         console.log('error')
     }
@@ -45,6 +44,7 @@ for(i = 0; i < 20; i++){
     let randomDog = getImg(dogApi)
     dogData.push(randomDog)
 }
+
 
 function displayList(items, wrapper, rows_per_page, page) {
     wrapper.innerHTML = ""
@@ -93,24 +93,25 @@ function paginationButton(page, items) {
 }
 
 function createArrowButton(){
-  let nButton = document.createElement('button')
-  let PButton = document.createElement('button')
-  nButton.className = 'arrowBtn'
-  PButton.className = 'arrowBtn'
+  let nextButton = document.createElement('button')
+  let prevButton = document.createElement('button')
+  nextButton.className = 'arrowBtn'
+  prevButton.className = 'arrowBtn'
 
-  PButton.innerText = '<'
-  PButton.addEventListener('click', function(){
+  prevButton.innerText = '<'
+  prevButton.addEventListener('click', function(){
       currentPage--
       displayList(testImages, listElement, rows, currentPage)
   })
 
-  nButton.innerText = '>'
-  nButton.addEventListener('click', function(){
+  nextButton.innerText = '>'
+  nextButton.addEventListener('click', function(){
       currentPage++
       displayList(testImages, listElement, rows, currentPage)
   })
-  arrowDiv1.appendChild(PButton)
-  arrowDiv2.appendChild(nButton)
+  arrowDiv1.appendChild(prevButton)
+  arrowDiv2.appendChild(nextButton)
+
 }
 
 modalClose.addEventListener('click', function (e) {
@@ -121,7 +122,7 @@ modalClose.addEventListener('click', function (e) {
 displayList(testImages, listElement, rows, currentPage);
 createArrowButton()
 setupPaginiation(testImages, paginiationBtns, rows);
-
+getImg(dogApi)
 
 
 
