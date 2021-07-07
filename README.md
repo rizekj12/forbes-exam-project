@@ -1,4 +1,4 @@
-h
+
 This project was developed to in an attempt to pass the following front-end development application for Forbes: 
 The Exercise
 Using any image API of your choice, or API that returns content with images:
@@ -20,4 +20,4 @@ Technical Constraints
 Of all the requirements in this project I was able to accomplish all except making the API function correctly. I was able to retrieve the data however I ran into issues with Promises when trying to get multiple calls to work and push the data into one array. If given the time I would certainly be able to fix this. 
 
 
-test 1
+
