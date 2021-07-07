@@ -17,5 +17,3 @@ Technical Constraints
 ● If applicable: Include instructions for running your unit tests
 
 Of all the requirements in this project I was able to accomplish all except making the API function correctly. I was able to retrieve the data however I ran into issues with Promises when trying to get multiple calls to work and push the data into one array. If given the time I would certainly be able to fix this. 
-
-Josh Change 1
